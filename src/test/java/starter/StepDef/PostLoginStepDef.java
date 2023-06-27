@@ -4,6 +4,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.module.jsv.JsonSchemaValidator;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.TemanPetani.TemanPetaniAPI;
@@ -28,10 +30,14 @@ public class PostLoginStepDef {
 
     @When("Send post login user")
     public void sendPostLoginUser() {
-        SerenityRest.when().post(temanPetaniAPI.LOGIN);
+        Response response = SerenityRest.when().post(temanPetaniAPI.LOGIN);
+        JsonPath jsonpath = response.jsonPath();
+        String token = jsonpath.getString("data.token");
+        Constant.BEARER_TOKEN = token;
+        System.out.println(Constant.BEARER_TOKEN);
     }
 
-    @And("Response body status should be {string} and message should be {string}")
+    @And("Response body post login status should be {string} and message should be {string}")
     public void responseBodyStatusShouldBeAndMessageShouldBe(String status, String message) {
         SerenityRest.and()
                 .body(TemanPetaniResponse.STATUS, equalTo(status))
@@ -62,7 +68,7 @@ public class PostLoginStepDef {
         temanPetaniAPI.postLogin(json);
     }
 
-    @And("Response body status should be {string}, message should be {string}, and token is exist")
+    @And("Response body post login status should be {string}, message should be {string}, and token is exist")
     public void responseBodyStatusShouldBeMessageShouldBeAndTokenIsExist(String status, String message) {
         SerenityRest.and()
                 .body(TemanPetaniResponse.STATUS, equalTo(status))
