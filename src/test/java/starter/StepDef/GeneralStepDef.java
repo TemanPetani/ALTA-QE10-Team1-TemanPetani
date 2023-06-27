@@ -23,4 +23,10 @@ public class GeneralStepDef {
     public void statusCodeShouldBeCreated(int created) {
         SerenityRest.then().statusCode(created);
     }
+
+
+    @Then("Status code should be {int} Internal Server Error")
+    public void statusCodeShouldBeInternalServerErr(int internalServerErr) {
+        SerenityRest.then().statusCode(internalServerErr);
+    }
 }
