@@ -22,9 +22,15 @@ public class PostLoginStepDef {
     @Steps
     TemanPetaniAPI temanPetaniAPI;
 
-    @Given("post login with valid email and password")
-    public void postLoginWithValidEmailAndPassword() {
-        File json = new File(Constant.REQ_BODY_DIR+ "Login/ValidEmailAndPassword.json");
+    @Given("post login with valid email and password for role admin")
+    public void postLoginWithValidEmailAndPasswordForAdmin() {
+        File json = new File(Constant.REQ_BODY_DIR+ "Login/ValidEmailAndPasswordAdmin.json");
+        temanPetaniAPI.postLogin(json);
+    }
+
+    @Given("post login with valid email and password for role user")
+    public void postLoginWithValidEmailAndPasswordForUser() {
+        File json = new File(Constant.REQ_BODY_DIR+ "Login/ValidEmailAndPasswordUser.json");
         temanPetaniAPI.postLogin(json);
     }
 
@@ -32,9 +38,22 @@ public class PostLoginStepDef {
     public void sendPostLoginUser() {
         Response response = SerenityRest.when().post(temanPetaniAPI.LOGIN);
         JsonPath jsonpath = response.jsonPath();
+        if(jsonpath.getString("data.token") != null) {
+            String token = jsonpath.getString("data.token");
+            Constant.TOKEN_ADMIN = token;
+            System.out.printf("admin: " +token);
+        } else {
+            SerenityRest.when().post(temanPetaniAPI.LOGIN);
+        }
+    }
+
+    @When("Send post login user for role user")
+    public void sendPostLoginUserForRoleUser() {
+        Response response = SerenityRest.when().post(temanPetaniAPI.LOGIN);
+        JsonPath jsonpath = response.jsonPath();
         String token = jsonpath.getString("data.token");
-        Constant.BEARER_TOKEN = token;
-        System.out.println(Constant.BEARER_TOKEN);
+        Constant.TOKEN_USERS = token;
+        System.out.printf("users: " +token);
     }
 
     @And("Response body post login status should be {string} and message should be {string}")

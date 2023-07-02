@@ -5,5 +5,9 @@ public class Constant {
     public static final String DIR = System.getProperty("user.dir");
     public static String REQ_BODY_DIR = DIR + "/src/test/resources/JSON/ReqBody/";
     public static String JSON_SCHEMA_DIR = DIR + "/src/test/resources/JSON/JSONSchema/";
-    public static String BEARER_TOKEN = "";
+
+    //environment dynamic
+    public static String TOKEN_ADMIN = "";
+    public static String TOKEN_USERS = "";
+    public static String TOKEN_DELETE = "";
 }
