@@ -45,4 +45,9 @@ public class GeneralStepDef {
         SerenityRest.and()
                 .body(TemanPetaniResponse.MESSAGE, containsString(message));
     }
+
+    @Then("Status code should be {int} Internal Server Error")
+    public void statusCodeShouldBeInternalServerErr(int internalServerErr) {
+        SerenityRest.then().statusCode(internalServerErr);
+    }
 }

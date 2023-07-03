@@ -4,8 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.module.jsv.JsonSchemaValidator;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -96,6 +94,7 @@ public class PostUserStepDef {
 
     @Given("post new user with empty password")
     public void postNewUserWithEmptyPassword() {
+
         JSONObject obj = new JSONObject();
         obj.put("fullname", names().full(90).get());
         obj.put("email", emails().domain("temanpetani.id").get());

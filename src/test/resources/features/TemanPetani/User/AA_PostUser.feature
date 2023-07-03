@@ -106,7 +106,7 @@ Feature: Post New User
     And  Response body post create new user status should be "<status>" and message contains "<message>"
     And Validate post create new user JSON Schema
     Examples:
-      | status  | message                 |
+      | status  | message                        |
       | success | Berhasil Membuat Pengguna Baru |
 
   @Testing @PositiveCase @User @PostUser
@@ -117,7 +117,7 @@ Feature: Post New User
     And  Response body post create new user status should be "<status>" and message contains "<message>"
     And Validate post create new user JSON Schema
     Examples:
-      | status  | message                 |
+      | status  | message                        |
       | success | Berhasil Membuat Pengguna Baru |
 
   @Testing @NegativeCase @User @PostUser
