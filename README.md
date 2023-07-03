@@ -35,7 +35,7 @@ This is API Automation Testing Project for [Teman Petani App](#links).
 - We recommended you to run this project in Intellij IDEA and make sure install Maven and Cucumber for Java and Gherkins first
 - Clone project on your device
 ```
-git clone https://github.com/TemanPetani/TemanPetani-WebTest.git
+git clone https://github.com/TemanPetani/TemanPetani-APIAutomation.git
 ```
 - Open IntelliJ IDEA and the project on your device
 - For Run Automation Testing
