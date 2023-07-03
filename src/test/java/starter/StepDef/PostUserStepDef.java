@@ -8,12 +8,14 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
+import org.apache.commons.lang3.RandomStringUtils;
 import starter.TemanPetani.TemanPetaniAPI;
 import starter.TemanPetani.TemanPetaniResponse;
 import starter.Utils.Constant;
-
+import org.json.simple.JSONObject;
 import java.io.File;
-
+import static net.andreinc.mockneat.unit.user.Emails.emails;
+import static net.andreinc.mockneat.unit.user.Names.names;
 import static org.hamcrest.Matchers.*;
 
 public class PostUserStepDef {
@@ -21,8 +23,13 @@ public class PostUserStepDef {
     TemanPetaniAPI temanPetaniAPI;
     @Given("post new user with valid req body")
     public void postNewUserWithValidReqBody() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/ValidCredential.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "Ghalda123!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @When("Send post create new user")
@@ -45,79 +52,144 @@ public class PostUserStepDef {
 
     @Given("post new user with registered email")
     public void postNewUserWithRegisteredEmail() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/RegisteredEmail.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", "admin@temanpetani.id");
+        obj.put("password", "Ghalda123!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with registered phone")
     public void postNewUserWithRegisteredPhone() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/RegisteredPhone.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "Ghalda123!");
+        obj.put("phone", "081213141516");
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with empty fullname")
     public void postNewUserWithEmptyFullname() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/EmptyFullname.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", "");
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "Ghalda123!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with empty email")
     public void postNewUserWithEmptyEmail() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/EmptyEmail.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", "");
+        obj.put("password", "Ghalda123!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with empty password")
     public void postNewUserWithEmptyPassword() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/EmptyPassword.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with empty phone")
     public void postNewUserWithEmptyPhone() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/EmptyPhone.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "Ghalda123!");
+        obj.put("phone", "");
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with empty address")
     public void postNewUserWithEmptyAddress() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/EmptyAddress.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "Ghalda123!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with password less than 8")
     public void postNewUserWithPasswordLessThan() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/PasswordLessThan.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "G3!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with password length is 8")
     public void postNewUserWithPasswordLengthIs() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/PasswordEqualTo.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "Ghalda12!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with password more than 8")
     public void postNewUserWithPasswordMoreThan() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/PasswordMoreThan.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "Ghaldaa123!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with password without uppercase")
     public void postNewUserWithPasswordWithoutUppercase() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/PasswordWithoutUppercase.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "ghaldaa123!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with password without special char")
     public void postNewUserWithPasswordWithoutSpecialChar() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/PasswordWithoutSpecialChar.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "ghaldaa12345");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 
     @Given("post new user with password without number")
     public void postNewUserWithPasswordWithoutNumber() {
-        File json = new File(Constant.REQ_BODY_DIR+ "UserProfile/PostNewUser/PasswordWithoutNumber.json");
-        temanPetaniAPI.postUser(json);
+        JSONObject obj = new JSONObject();
+        obj.put("fullname", names().full(90).get());
+        obj.put("email", emails().domain("temanpetani.id").get());
+        obj.put("password", "ghaldaputri!");
+        obj.put("phone", "0" + RandomStringUtils.randomNumeric(10));
+        obj.put("address", "address" );
+        temanPetaniAPI.postUser(obj);
     }
 }
