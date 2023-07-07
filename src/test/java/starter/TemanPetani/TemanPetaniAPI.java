@@ -20,7 +20,9 @@ public class TemanPetaniAPI {
     public static String USERS_PICTURE = Constant.BASE_URL+ "/users/picture";
     public static String USERS_PLANTS = Constant.BASE_URL+ "/users/plants";
     public static String USERS_PRODUCTS = Constant.BASE_URL+ "/users/products";
-
+    public static String TEMPLATES = Constant.BASE_URL+ "/templates";
+    public static String TASKS = Constant.BASE_URL+ "/templates/{id}";
+    public static String TEMPLATES_TASKS_ID = "/templates/tasks/{id}";
     @Step("Post login")
     public void postLogin(File json){
         SerenityRest.given()
@@ -108,5 +110,61 @@ public class TemanPetaniAPI {
         SerenityRest.given()
                 .headers("Authorization", "Bearer " + Constant.TOKEN_USERS)
                 .multiPart("picture", "ini picture", "multipart/form-data");
+    }
+
+    @Step("Get Schedule")
+    public void getSchedule(){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN);
+    }
+
+    @Step("Get User Schedule No Auth")
+    public void getScheduleNoAuth(){
+        SerenityRest.given();
+    }
+
+    @Step("Get User Schedule Invalid Auth")
+    public void getScheduleInvalidAuth(){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + "aaa");
+    }
+
+    @Step("Get Task")
+    public void getTask(Object id){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id);
+    }
+
+    @Step("Post Schedule")
+    public void postSchedule(JSONObject json){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .contentType(ContentType.JSON)
+                .body(json);
+    }
+
+    @Step("Post Task")
+    public void postTask(JSONObject json){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .contentType(ContentType.JSON)
+                .body(json);
+    }
+
+    @Step("Put Schedule")
+    public void putSchedule(Object id, JSONObject json) {
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id)
+                .contentType(ContentType.JSON)
+                .body(json);
+    }
+
+    @Step("DeleteSchedule")
+    public void deleteSchedule(Object id) {
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id);
     }
 }

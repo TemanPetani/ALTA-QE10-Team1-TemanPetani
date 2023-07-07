@@ -1,5 +1,5 @@
 Feature: Post Login User
-  @Testing @PositiveCase @Login
+  @Testing @PositiveCase @LoginAdmin
   Scenario Outline: Post login user with valid email and password for Role Admin
     Given post login with valid email and password for role admin
     When Send post login user
