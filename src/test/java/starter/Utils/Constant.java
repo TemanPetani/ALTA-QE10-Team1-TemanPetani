@@ -11,6 +11,9 @@ public class Constant {
     public static String TOKEN_ADMIN = "";
     public static String TOKEN_USERS = "";
     public static String TOKEN_DELETE = "";
-    public static String EMAIL_DELETE = "";
-    public static String PASSWORD_DELETE = "";
+    public static String ID_TEMPLATE = "";
+    public static String ID_TEMPLATE_DELETE = "";
+    public static String ID_TASK = "";
+    public static String ID_TASK_DELETE = "";
+
 }

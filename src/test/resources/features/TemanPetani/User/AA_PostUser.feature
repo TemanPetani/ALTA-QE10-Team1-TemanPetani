@@ -129,7 +129,7 @@ Feature: Post New User
     And Validate post create new user JSON Schema
     Examples:
       | status | message                         |
-      | failed | Field validation for 'Password' include uppercase |
+      | failed | Password harus mengandung kombinasi huruf kapital dan huruf kecil, angka, dan karakter khusus |
 
   @Testing @NegativeCase @User @PostUser
   Scenario Outline: Create new user with password without special character
@@ -140,7 +140,7 @@ Feature: Post New User
     And Validate post create new user JSON Schema
     Examples:
       | status | message                                              |
-      | failed | Field validation for 'Password' include special char|
+      | failed | Password harus mengandung kombinasi huruf kapital dan huruf kecil, angka, dan karakter khusus|
 
   @Testing @NegativeCase @User @PostUser
   Scenario Outline: Create new user with password without number
@@ -150,5 +150,5 @@ Feature: Post New User
     And  Response body post create new user status should be "<status>" and message contains "<message>"
     And Validate post create new user JSON Schema
     Examples:
-      | status | message                                        |
-      | failed | Field validation for 'Password' include number |
+      | status | message                                                                                       |
+      | failed | Password harus mengandung kombinasi huruf kapital dan huruf kecil, angka, dan karakter khusus |

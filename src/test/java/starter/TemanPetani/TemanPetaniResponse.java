@@ -12,5 +12,5 @@ public class TemanPetaniResponse {
     public static String DATA_PRODUCT = "data.products[0]";
     public static String DATA_ID = "data.id";
     public static String TOKEN_USERS = "data.token";
-
+    public static String DATA_INDEX = "data[0]";
 }
