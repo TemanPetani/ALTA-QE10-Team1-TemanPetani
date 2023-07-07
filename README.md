@@ -14,13 +14,12 @@ Capstone Project at Altera academy
 
 ## About
 
-TemanPetani is a web application that aims to facilitate access to agricultural resources for farmers. With this platform, it can help farmers improve crop yields, reduce distribution costs, and increase profits.
-
-This is API Automation Testing Project for [Teman Petani App](#links).
-
-## Test Report
+[Teman Petani App](https://teman-petani-web.vercel.app/) is a web application that aims to facilitate access to agricultural resources for farmers. With this platform, it can help farmers improve crop yields, reduce distribution costs, and increase profits.
 
 ## Test Coverage
+![img.png](src/test/resources/image-report/FeatureLogin.png)
+![img.png](src/test/resources/image-report/FeatureUsers.png)
+![img.png](src/test/resources/image-report/img.png)
 
 ## Tools & Tech Stack
 - [Java 8](https://www.oracle.com/java/technologies/downloads/#java8)
@@ -35,7 +34,7 @@ This is API Automation Testing Project for [Teman Petani App](#links).
 - We recommended you to run this project in Intellij IDEA and make sure install Maven and Cucumber for Java and Gherkins first
 - Clone project on your device
 ```
-git clone https://github.com/TemanPetani/TemanPetani-WebTest.git
+git clone https://github.com/TemanPetani/TemanPetani-APIAutomation.git
 ```
 - Open IntelliJ IDEA and the project on your device
 - For Run Automation Testing
