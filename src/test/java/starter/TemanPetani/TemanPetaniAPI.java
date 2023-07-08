@@ -22,7 +22,8 @@ public class TemanPetaniAPI {
     public static String USERS_PRODUCTS = Constant.BASE_URL+ "/users/products";
     public static String TEMPLATES = Constant.BASE_URL+ "/templates";
     public static String TASKS = Constant.BASE_URL+ "/templates/{id}";
-    public static String TEMPLATES_TASKS_ID = "/templates/tasks/{id}";
+    public static String TEMPLATES_TASKS_ID = Constant.BASE_URL+ "/templates/tasks/{id}";
+    public static String TEMPLATES_ID_TASKS = Constant.BASE_URL+ "/templates/{id}/tasks";
     @Step("Post login")
     public void postLogin(File json){
         SerenityRest.given()
@@ -145,9 +146,10 @@ public class TemanPetaniAPI {
     }
 
     @Step("Post Task")
-    public void postTask(JSONObject json){
+    public void postTask(Object id, JSONObject json){
         SerenityRest.given()
                 .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id)
                 .contentType(ContentType.JSON)
                 .body(json);
     }
@@ -161,8 +163,24 @@ public class TemanPetaniAPI {
                 .body(json);
     }
 
-    @Step("DeleteSchedule")
+    @Step("Delete Schedule")
     public void deleteSchedule(Object id) {
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id);
+    }
+
+    @Step("Put Task")
+    public void putTask(Object id, JSONObject json){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id)
+                .contentType(ContentType.JSON)
+                .body(json);
+    }
+
+    @Step("Delete Task")
+    public void deleteTask(Object id) {
         SerenityRest.given()
                 .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
                 .pathParams("id", id);

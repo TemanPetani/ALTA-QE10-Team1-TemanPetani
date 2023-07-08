@@ -34,7 +34,7 @@ public class GetScheduleStepDef {
             Constant.ID_TEMPLATE = idTemplate;
             System.out.printf(idTemplate);
             String idTemplateDel= jsonpath.getString("data[1].id");
-            Constant.ID_TASK_DELETE = idTemplateDel;
+            Constant.ID_TEMPLATE_DELETE = idTemplateDel;
         } else {
             SerenityRest.when().get(TemanPetaniAPI.TEMPLATES);
         }
