@@ -22,7 +22,7 @@ Feature: Put Schedule Templates
       | 10000 | failed | Data Template Tidak Ditemukan |
 
   @Testing @NegativeCase @Templates @PutScheduleTemplates
-  Scenario Outline: Update schedule templates with valid req body and exceed id
+  Scenario Outline: Update schedule templates with valid req body and invalid id
     Given put schedule templates with valid req body and invalid ID "<id>"
     When Send put schedule templates
     Then Status code should be 400 Bad Request
