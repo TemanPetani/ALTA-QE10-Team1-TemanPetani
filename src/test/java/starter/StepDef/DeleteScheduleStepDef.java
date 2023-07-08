@@ -14,14 +14,15 @@ import java.io.File;
 public class DeleteScheduleStepDef {
     @Steps
     TemanPetaniAPI temanPetaniAPI;
-    @Given("delete schedule templates with invalid ID {string}")
-    public void deleteScheduleTemplatesWithInvalidID(String id) {
-        temanPetaniAPI.deleteSchedule(id);
-    }
 
     @Given("delete schedule templates with valid ID")
     public void deleteScheduleTemplatesWithValidID() {
-        temanPetaniAPI.deleteSchedule(Constant.ID_TASK_DELETE);
+        temanPetaniAPI.deleteSchedule(Constant.ID_TEMPLATE_DELETE);
+    }
+
+    @When("Send delete schedule templates")
+    public void sendDeleteScheduleTemplates() {
+        SerenityRest.when().delete(TemanPetaniAPI.TASKS);
     }
 
     @And("Validate delete schedule templates JSON Schema")
@@ -35,8 +36,8 @@ public class DeleteScheduleStepDef {
         temanPetaniAPI.deleteSchedule(id);
     }
 
-    @When("Send delete schedule templates")
-    public void sendDeleteScheduleTemplates() {
-        SerenityRest.when().delete(TemanPetaniAPI.TEMPLATES_TASKS_ID);
+    @Given("delete schedule templates with invalid ID {string}")
+    public void deleteScheduleTemplatesWithInvalidID(String id) {
+        temanPetaniAPI.deleteSchedule(id);
     }
 }
