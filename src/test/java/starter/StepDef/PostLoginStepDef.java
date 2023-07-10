@@ -41,7 +41,6 @@ public class PostLoginStepDef {
         if(jsonpath.getString("data.token") != null) {
             String token = jsonpath.getString("data.token");
             Constant.TOKEN_ADMIN = token;
-            System.out.println("admin: " +token);
         } else {
             SerenityRest.when().post(temanPetaniAPI.LOGIN);
         }

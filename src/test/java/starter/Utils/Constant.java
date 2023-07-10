@@ -15,5 +15,7 @@ public class Constant {
     public static String ID_TEMPLATE_DELETE = "";
     public static String ID_TASK = "";
     public static String ID_TASK_DELETE = "";
-
+    public static String ID_PLANT = "";
+    public static String ID_PLANT_DELETE = "";
+    public static String ID_PLANT_ACTIVITY = "";
 }
