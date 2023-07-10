@@ -24,6 +24,11 @@ public class TemanPetaniAPI {
     public static String TASKS = Constant.BASE_URL+ "/templates/{id}";
     public static String TEMPLATES_TASKS_ID = Constant.BASE_URL+ "/templates/tasks/{id}";
     public static String TEMPLATES_ID_TASKS = Constant.BASE_URL+ "/templates/{id}/tasks";
+    public static String PLANTS = Constant.BASE_URL+ "/plants";
+    public static String PLANTS_ID = Constant.BASE_URL+ "/plants/{id}";
+    public static String PLANTS_ACTIVITY_ID = Constant.BASE_URL+ "/plants/activities/{id}";
+    public static String PLANTS_NOTIFICATION = Constant.BASE_URL+ "/plants/notifications";
+
     @Step("Post login")
     public void postLogin(File json){
         SerenityRest.given()
@@ -181,6 +186,70 @@ public class TemanPetaniAPI {
 
     @Step("Delete Task")
     public void deleteTask(Object id) {
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id);
+    }
+
+    @Step("Get All Plant")
+    public void getPlant(){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN);
+    }
+
+    @Step("Get All Plant No Auth")
+    public void getPlantNoAuth(){
+        SerenityRest.given();
+    }
+
+    @Step("Get All Plant Invalid Auth")
+    public void getPlantInvalidAuth(){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + "aaa");
+    }
+
+    public void getDetailPlant(Object id){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id);
+    }
+
+    @Step("Get Plant Notification")
+    public void getPlantNotification(){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN);
+    }
+
+    @Step("Get Plant Notification No Auth")
+    public void getPlantNotificationNoAuth(){
+        SerenityRest.given();
+    }
+
+    @Step("Get Plant Notification Invalid Auth")
+    public void getPlantNotificationInvalidAuth(){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + "aaa");
+    }
+
+    @Step("Post PlantActivity")
+    public void postPlantActivity(JSONObject json){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .contentType(ContentType.JSON)
+                .body(json);
+    }
+
+    @Step("Put Plant")
+    public void putPlant(Object id, JSONObject json){
+        SerenityRest.given()
+                .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
+                .pathParams("id", id)
+                .contentType(ContentType.JSON)
+                .body(json);
+    }
+
+    @Step("Delete Plants")
+    public void deletePlants(Object id) {
         SerenityRest.given()
                 .headers("Authorization", "Bearer " + Constant.TOKEN_ADMIN)
                 .pathParams("id", id);
